@@ -1,0 +1,23 @@
+package org.apache.maven.archetypes.maven_archetype_quickstart;
+
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class readJSON {
+
+	public static void main(String[] args) throws IOException, ParseException{
+		JSONParser jsonparser = new JSONParser();
+		FileReader fileread=new FileReader("src/student.json");
+		Object obj = jsonparser.parse(fileread);
+		JSONObject studentobj=(JSONObject)obj;
+		String fname = (String) studentobj.get("fname");
+        String lname = (String) studentobj.get("lname");
+
+        System.out.println("Firstname: " + fname);
+        System.out.println("Lastname: " + lname);
+    }
+}
